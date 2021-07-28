@@ -2,6 +2,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ParseJson {
+    private final static int KEY = 0;
+    private final static int VALUE = 1;
+
     private final String fileName;
 
     private List<String> list;
@@ -25,18 +28,18 @@ public class ParseJson {
                 list) {
             String[] parsedLines = line.split(":");
 
-            char[] charsKey = parsedLines[0].toCharArray();
-            char[] charsValue = parsedLines[1].toCharArray();
+            char[] charsKey = parsedLines[KEY].toCharArray();
+            char[] charsValue = parsedLines[VALUE].toCharArray();
 
-            StringBuilder key = fill(charsKey);
-            StringBuilder value = fill(charsValue);
+            StringBuilder key = fillFields(charsKey);
+            StringBuilder value = fillFields(charsValue);
 
             parsedObjects.add(new ParsedObject(key.toString(), value.toString()));
         }
         return parsedObjects;
     }
 
-    private StringBuilder fill(char[] chars){
+    private StringBuilder fillFields(char[] chars) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < chars.length; i++) {
