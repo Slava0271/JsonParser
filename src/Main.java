@@ -10,7 +10,7 @@ public class Main {
 
         for (ParsedObject object :
                 parsedObjects) {
-            System.out.println(object);
+            System.out.println(object.getKey() + " " + object.getValue());
         }
     }
 }
