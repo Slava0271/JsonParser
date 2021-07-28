@@ -24,36 +24,31 @@ public class ParseJson {
         for (String line :
                 list) {
             String[] parsedLines = line.split(":");
-            StringBuilder key = new StringBuilder();
-            StringBuilder value = new StringBuilder();
 
             char[] charsKey = parsedLines[0].toCharArray();
             char[] charsValue = parsedLines[1].toCharArray();
 
-            for (int i = 0; i < charsKey.length; i++) {
-                if (charsKey[i] == '"') {
-                    i++;
-                    while (charsKey[i] != '"') {
-                        key.append(charsKey[i]);
-                        i++;
-                    }
-                    break;
-                }
-            }
-
-            for (int i = 0; i < charsValue.length; i++) {
-                if (charsValue[i] == '"') {
-                    i++;
-                    while (charsValue[i] != '"') {
-                        value.append(charsValue[i]);
-                        i++;
-                    }
-                    break;
-                }
-            }
+            StringBuilder key = fill(charsKey);
+            StringBuilder value = fill(charsValue);
 
             parsedObjects.add(new ParsedObject(key.toString(), value.toString()));
         }
         return parsedObjects;
+    }
+
+    private StringBuilder fill(char[] chars){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == '"') {
+                i++;
+                while (chars[i] != '"') {
+                    stringBuilder.append(chars[i]);
+                    i++;
+                }
+                break;
+            }
+        }
+        return stringBuilder;
     }
 }
