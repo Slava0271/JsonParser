@@ -8,8 +8,7 @@ public class Main {
         ParseJson parseJson = new ParseJson(fileName);
         LinkedList<ParsedObject> parsedObjects = parseJson.parseJson();
 
-        for (ParsedObject object :
-                parsedObjects) {
+        for (ParsedObject object : parsedObjects) {
             System.out.println(object.getKey() + " " + object.getValue());
         }
     }

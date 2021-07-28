@@ -12,11 +12,10 @@ public class ReadFile {
             bufferedReader = new BufferedReader(new FileReader(fileName));
 
             List<String> lines = new LinkedList<>();
-            String line = "";
+            String line = bufferedReader.readLine();
             while (true) {
                 line = bufferedReader.readLine();
                 if (line.equals("}")) break;
-                line = bufferedReader.readLine();
                 lines.add(line);
             }
             return lines;
