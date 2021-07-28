@@ -17,7 +17,7 @@ public class ParseJson {
 
     private void initList() {
         list = new ReadFile().readFile(fileName);
-    }git add
+    }
 
     public LinkedList<ParsedObject> parseJson() {
         LinkedList<ParsedObject> parsedObjects = new LinkedList<>();
